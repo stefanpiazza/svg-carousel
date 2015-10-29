@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+    	<div class='container'>
+            <ul class='carousel'>
+                <li class='image hide show'></li>
+                <li class='image hide'></li>
+                <li class='image hide'></li>
+                <li class='image hide'></li>
+
+                <div class='lh arrow'></div>
+                <div class='rh arrow'></div>
+            </ul>
+    	</div>
+
+        <script src="scripts/script.js"></script>
+
+        <script type="text/javascript">
+            var previousImage = null;
+            var currentImage = 0;
+            var images = document.getElementsByClassName('image')
+            var carousel = document.getElementsByClassName('carousel')[0];
+
+            var leftArrow = document.getElementsByClassName('lh')[0];
+            var rightArrow = document.getElementsByClassName('rh')[0];
+
+            leftArrow.addEventListener('click', function () {
+                previousImage = currentImage;
+                currentImage -= 1;
+                if (currentImage < 0) { 
+                    currentImage = 0;
+                    return; 
+                }
+
+                images[previousImage].classList.remove('show');
+            });
+
+            rightArrow.addEventListener('click', function () {
+                previousImage = currentImage;
+                currentImage += 1;
+                if (currentImage > images.length - 1) { 
+                    currentImage = images.length - 1;
+                    return; 
+                }
+
+                images[currentImage].classList.add('show');
+            });
+        </script>
+    </body>
+</html> 
